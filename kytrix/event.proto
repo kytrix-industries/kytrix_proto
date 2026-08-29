@@ -1,0 +1,17 @@
+syntax = "proto3";
+package kytrix.event;
+
+import "types/news.proto";
+import "types/index.proto";
+import "types/x.proto";
+import "types/wallet.proto";
+
+message Event{
+  oneof event{
+    types.News  news  = 1;
+    types.Index index = 2;
+    types.Tweet tweet = 3;
+    types.WalletTransfer wallet_transfer = 4;
+    types.XProfile x_profile = 5;
+  }
+}

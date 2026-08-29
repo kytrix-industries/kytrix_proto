@@ -1,0 +1,35 @@
+syntax = "proto3";
+package kytrix.types;
+
+message Index{
+  string   code        = 1;
+  uint32   last_price  = 2;
+  uint32   open_price  = 3;
+  uint32   high_price  = 4;
+  uint32   low_price   = 5;
+  uint32   close_price = 6;
+  bool     is_trading  = 7;
+  sfixed64 timestamp   = 8;
+}
+
+message LocalizedName {
+  string en = 1;
+  string zh = 2;
+}
+
+message IndexCategory {
+  string        code = 1;
+  LocalizedName name = 2;
+}
+
+message IndexDefinition {
+  string        code     = 1;
+  string        category = 2;
+  LocalizedName name     = 3;
+  string        request_code = 4;
+}
+
+message IndexManifest {
+  repeated IndexCategory   categories = 1;
+  repeated IndexDefinition indices    = 2;
+}

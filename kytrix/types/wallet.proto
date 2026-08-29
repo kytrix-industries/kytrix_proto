@@ -1,0 +1,31 @@
+syntax = "proto3";
+package kytrix.types;
+
+enum WalletNetwork {
+  WALLET_NETWORK_UNSPECIFIED = 0;
+  ETHEREUM = 1;
+  SOLANA = 2;
+}
+
+enum WalletSelectionStatus {
+  WALLET_SELECTION_STATUS_UNSPECIFIED = 0;
+  ACTIVE = 1;
+  PAUSED = 2;
+}
+
+message WalletSelection {
+  WalletNetwork network = 1;
+  string address = 2;
+  WalletSelectionStatus status = 3;
+  sfixed64 created_at = 4;
+  sfixed64 updated_at = 5;
+}
+
+message WalletTransfer {
+  string event_id = 1;
+  string from_address = 2;
+  string to_address = 3;
+  string amount = 4;
+  string token_symbol = 5;
+  sfixed64 timestamp = 6;
+}

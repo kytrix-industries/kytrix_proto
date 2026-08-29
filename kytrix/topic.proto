@@ -1,0 +1,21 @@
+syntax = "proto3";
+package kytrix.topic;
+
+message NewsTopic {}
+
+message IndexTopic {
+  string code = 1;
+}
+
+message TopicX {}
+
+message WalletTopic {}
+
+message Topic {
+  oneof topic {
+    NewsTopic  news  = 1;
+    IndexTopic index = 2;
+    TopicX     x     = 3;
+    WalletTopic wallet = 4;
+  }
+}
