@@ -7,17 +7,17 @@ message Request{
   uint32 id = 1;
 
   oneof request{
-    SetSubscriptions set_subscriptions = 101;
-    Reauthenticate   reauthenticate    = 102;
-    GetEtf           get_etf           = 103;
-    GetIndexManifest get_index_manifest = 104;
-    XSearch          x_search          = 105;
-    XSelections      x_selections      = 106;
-    XAddSelection    x_add_selection   = 107;
-    XDeleteSelection x_delete_selection = 108;
-    XTweets          x_tweets          = 109;
-    WalletSelections wallet_selections = 110;
-    WalletAddSelection wallet_add_selection = 111;
+    SetSubscriptions      set_subscriptions       = 101;
+    Reauthenticate        reauthenticate          = 102;
+    GetEtf                get_etf                 = 103;
+    GetIndexManifest      get_index_manifest      = 104;
+    XSearch               x_search                = 105;
+    XSelections           x_selections            = 106;
+    XAddSelection         x_add_selection         = 107;
+    XDeleteSelection      x_delete_selection      = 108;
+    XTweets               x_tweets                = 109;
+    WalletSelections      wallet_selections       = 110;
+    WalletAddSelection    wallet_add_selection    = 111;
     WalletDeleteSelection wallet_delete_selection = 112;
   }
 }
@@ -32,24 +32,31 @@ message Reauthenticate {
 }
 
 message GetEtf {}
+
 message GetIndexManifest {}
 
 message XSearch {
   string query = 1;
 }
+
 message XSelections {}
+
 message XAddSelection {
   string username = 1;
 }
+
 message XDeleteSelection {
   string x_user_id = 1;
 }
+
 message XTweets {}
 
 message WalletSelections {}
+
 message WalletAddSelection {
   string address = 1;
 }
+
 message WalletDeleteSelection {
   string address = 1;
 }

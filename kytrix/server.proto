@@ -10,9 +10,9 @@ import "types/wallet.proto";
 
 message ServerMessage{
   oneof message{
-    Response     response      = 1;
-    event.Event  event         = 2;
-    SessionState session_state = 3;
+    Response      response       = 1;
+    event.Event   event          = 2;
+    SessionState  session_state  = 3;
     AuthChallenge auth_challenge = 4;
   }
 }
@@ -21,18 +21,18 @@ message Response{
   uint32 id = 1;
 
   oneof response{
-    ErrorResponse            error             = 100;
-    SetSubscriptionsResponse set_subscriptions = 101;
-    ReauthenticateResponse   reauthenticate    = 102;
-    EtfResponse              etf               = 103;
-    IndexManifestResponse    index_manifest    = 104;
-    XSearchResponse          x_search          = 105;
-    XSelectionsResponse      x_selections      = 106;
-    XAddSelectionResponse    x_add_selection   = 107;
-    XDeleteSelectionResponse x_delete_selection = 108;
-    XTweetsResponse          x_tweets          = 109;
-    WalletSelectionsResponse wallet_selections = 110;
-    WalletAddSelectionResponse wallet_add_selection = 111;
+    ErrorResponse                 error                   = 100;
+    SetSubscriptionsResponse      set_subscriptions       = 101;
+    ReauthenticateResponse        reauthenticate          = 102;
+    EtfResponse                   etf                     = 103;
+    IndexManifestResponse         index_manifest          = 104;
+    XSearchResponse               x_search                = 105;
+    XSelectionsResponse           x_selections            = 106;
+    XAddSelectionResponse         x_add_selection         = 107;
+    XDeleteSelectionResponse      x_delete_selection      = 108;
+    XTweetsResponse               x_tweets                = 109;
+    WalletSelectionsResponse      wallet_selections       = 110;
+    WalletAddSelectionResponse    wallet_add_selection    = 111;
     WalletDeleteSelectionResponse wallet_delete_selection = 112;
   }
 }
@@ -44,16 +44,16 @@ enum ErrorCode {
   ERROR_CODE_INDEX_TOPIC_LIMIT_EXCEEDED = 3;
   ERROR_CODE_INVALID_TOPIC              = 4;
   ERROR_CODE_AUTHENTICATION_UNAVAILABLE = 5;
-  ERROR_CODE_INVALID_REQUEST             = 6;
-  ERROR_CODE_NOT_READY                   = 7;
-  ERROR_CODE_INVALID_ARGUMENT            = 8;
-  ERROR_CODE_NOT_FOUND                   = 9;
-  ERROR_CODE_QUOTA_EXCEEDED              = 10;
-  ERROR_CODE_PROTECTED_ACCOUNT           = 11;
-  ERROR_CODE_UPSTREAM_UNAVAILABLE        = 12;
-  ERROR_CODE_TIMEOUT                     = 13;
-  ERROR_CODE_MUTATION_UNKNOWN            = 14;
-  ERROR_CODE_PROTOCOL                    = 15;
+  ERROR_CODE_INVALID_REQUEST            = 6;
+  ERROR_CODE_NOT_READY                  = 7;
+  ERROR_CODE_INVALID_ARGUMENT           = 8;
+  ERROR_CODE_NOT_FOUND                  = 9;
+  ERROR_CODE_QUOTA_EXCEEDED             = 10;
+  ERROR_CODE_PROTECTED_ACCOUNT          = 11;
+  ERROR_CODE_UPSTREAM_UNAVAILABLE       = 12;
+  ERROR_CODE_TIMEOUT                    = 13;
+  ERROR_CODE_MUTATION_UNKNOWN           = 14;
+  ERROR_CODE_PROTOCOL                   = 15;
 }
 
 message ErrorResponse {
@@ -79,8 +79,8 @@ message XSearchResponse {
 }
 
 message XSelectionsResponse {
-  repeated types.XSelection selections = 1;
-  uint32 x_account_limit = 2;
+  repeated types.XSelection selections      = 1;
+  uint32                    x_account_limit = 2;
 }
 
 message XAddSelectionResponse {
@@ -94,8 +94,8 @@ message XTweetsResponse {
 }
 
 message WalletSelectionsResponse {
-  repeated types.WalletSelection selections = 1;
-  uint32 wallet_address_limit = 2;
+  repeated types.WalletSelection selections           = 1;
+  uint32                         wallet_address_limit = 2;
 }
 
 message WalletAddSelectionResponse {
@@ -105,14 +105,14 @@ message WalletAddSelectionResponse {
 message WalletDeleteSelectionResponse {}
 
 message AuthChallenge {
-  string nonce     = 1;
+  string nonce      = 1;
   int64  expires_at = 2;
 }
 
 message SessionState {
-  uint64          entitlement_revision = 1;
-  bool            news_read            = 2;
-  uint32 index_topic_limit             = 3;
-  optional int64  next_change_at       = 4;
-  uint32          wallet_address_limit = 5;
+  uint64         entitlement_revision = 1;
+  bool           news_read            = 2;
+  uint32         index_topic_limit    = 3;
+  optional int64 next_change_at       = 4;
+  uint32         wallet_address_limit = 5;
 }

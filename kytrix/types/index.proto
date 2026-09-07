@@ -23,9 +23,9 @@ message IndexCategory {
 }
 
 message IndexDefinition {
-  string        code     = 1;
-  string        category = 2;
-  LocalizedName name     = 3;
+  string        code         = 1;
+  string        category     = 2;
+  LocalizedName name         = 3;
   string        request_code = 4;
 }
 

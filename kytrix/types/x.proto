@@ -2,41 +2,41 @@ syntax = "proto3";
 package kytrix.types;
 
 message XProfile {
-  string x_user_id      = 1;
-  string username       = 2;
-  string display_name   = 3;
-  string avatar_url     = 4;
-  bool   verified       = 5;
-  uint64 revision       = 6;
-  string description   = 7;
+  string x_user_id       = 1;
+  string username        = 2;
+  string display_name    = 3;
+  string avatar_url      = 4;
+  bool   verified        = 5;
+  uint64 revision        = 6;
+  string description     = 7;
   uint64 followers_count = 8;
   uint64 following_count = 9;
-  bool protected       = 10;
+  bool   protected       = 10;
 }
 
 enum XSelectionStatus {
   X_SELECTION_STATUS_UNSPECIFIED = 0;
-  X_PENDING = 1;
-  X_ACTIVE = 2;
-  X_PAUSED = 3;
+  X_PENDING                      = 1;
+  X_ACTIVE                       = 2;
+  X_PAUSED                       = 3;
 }
 
 message XSelection {
-  string x_user_id = 1;
-  XSelectionStatus status = 2;
-  sfixed64 created_at = 3;
-  sfixed64 updated_at = 4;
-  XProfile profile = 5;
+  string           x_user_id  = 1;
+  XSelectionStatus status     = 2;
+  sfixed64         created_at = 3;
+  sfixed64         updated_at = 4;
+  XProfile         profile    = 5;
 }
 
 message TweetTextSegment {
-  string text = 1;
-  optional string url = 2;
+  string          text = 1;
+  optional string url  = 2;
 }
 
 message Tweet {
-  string   tweet_id  = 1;
-  sfixed64 timestamp = 2;
+  string                    tweet_id      = 1;
+  sfixed64                  timestamp     = 2;
   repeated TweetTextSegment text_segments = 3;
 
   oneof reference {
@@ -44,8 +44,8 @@ message Tweet {
     Tweet quote  = 5;
   }
 
-  string x_user_id = 6;
-  repeated TweetMedia media = 7;
+  string              x_user_id = 6;
+  repeated TweetMedia media     = 7;
 }
 
 message TweetMedia {
@@ -77,6 +77,6 @@ message TweetMedia {
 }
 
 message TweetBatch {
-  repeated Tweet tweets       = 1;
-  repeated XProfile profiles  = 2;
+  repeated Tweet    tweets   = 1;
+  repeated XProfile profiles = 2;
 }
