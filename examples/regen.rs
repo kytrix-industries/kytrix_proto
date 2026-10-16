@@ -1,3 +1,10 @@
+//! Regenerates the protobuf Rust code that is committed under `src/`.
+//!
+//! This example is the only thing in this crate that needs `protoc` on `PATH`. It is never run
+//! during a normal build: `src/*.rs` already contains the generated modules, so consumers of this
+//! crate can `cargo build` without `protoc` installed. Run `cargo run --example regen` from the
+//! crate root after editing anything under `kytrix/`, then commit the updated `src/` files.
+
 const PROTOS: &[&str] = &[
     "kytrix/client.proto",
     "kytrix/server.proto",
@@ -30,8 +37,9 @@ fn main() {
     ] {
         config.type_attribute(ty, "#[derive(serde::Serialize, serde::Deserialize)]");
     }
+    config.out_dir("src");
     config
         .compile_protos(PROTOS, &["kytrix"])
         .expect("compile protos failed");
-    println!("cargo:rerun-if-changed=kytrix");
+    println!("regenerated protos into src/");
 }

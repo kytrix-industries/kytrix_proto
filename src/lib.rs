@@ -1,23 +1,23 @@
 #![allow(clippy::module_inception)]
 
 pub mod event {
-    include!(concat!(env!("OUT_DIR"), "/kytrix.event.rs"));
+    include!("kytrix.event.rs");
 }
 
 pub mod client {
-    include!(concat!(env!("OUT_DIR"), "/kytrix.client.rs"));
+    include!("kytrix.client.rs");
 }
 
 pub mod server {
-    include!(concat!(env!("OUT_DIR"), "/kytrix.server.rs"));
+    include!("kytrix.server.rs");
 }
 
 pub mod topic {
-    include!(concat!(env!("OUT_DIR"), "/kytrix.topic.rs"));
+    include!("kytrix.topic.rs");
 }
 
 pub mod types {
-    include!(concat!(env!("OUT_DIR"), "/kytrix.types.rs"));
+    include!("kytrix.types.rs");
 }
 
 #[cfg(test)]
