@@ -712,15 +712,21 @@ impl EntitlementFeatureValueType {
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct FinancialCalendarEvent {
-    #[prost(sfixed64, tag = "1")]
-    pub timestamp: i64,
-    #[prost(string, tag = "2")]
+    #[prost(uint32, tag = "1")]
+    pub year: u32,
+    #[prost(uint32, tag = "2")]
+    pub month: u32,
+    #[prost(uint32, tag = "3")]
+    pub day: u32,
+    #[prost(fixed32, optional, tag = "4")]
+    pub seconds_of_day: ::core::option::Option<u32>,
+    #[prost(string, tag = "5")]
     pub country_code: ::prost::alloc::string::String,
-    #[prost(string, tag = "3")]
+    #[prost(string, tag = "6")]
     pub name: ::prost::alloc::string::String,
-    #[prost(enumeration = "FinancialCalendarEventImportance", tag = "4")]
+    #[prost(enumeration = "FinancialCalendarEventImportance", tag = "7")]
     pub importance: i32,
-    #[prost(string, optional, tag = "5")]
+    #[prost(string, optional, tag = "8")]
     pub reference: ::core::option::Option<::prost::alloc::string::String>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -733,10 +739,10 @@ pub struct FinancialCalendar {
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum FinancialCalendarEventImportance {
-    FinancialCAlendarEventImportanceUnspecified = 0,
-    FinancialCAlendarEventImportanceLow = 1,
-    FinancialCAlendarEventImportanceMedium = 2,
-    FinancialCAlendarEventImportanceHigh = 3,
+    Unspecified = 0,
+    Low = 1,
+    Medium = 2,
+    High = 3,
 }
 impl FinancialCalendarEventImportance {
     /// String value of the enum field names used in the ProtoBuf definition.
@@ -745,35 +751,19 @@ impl FinancialCalendarEventImportance {
     /// (if the ProtoBuf definition does not change) and safe for programmatic use.
     pub fn as_str_name(&self) -> &'static str {
         match self {
-            Self::FinancialCAlendarEventImportanceUnspecified => {
-                "FINANCIAL_cALENDAR_EVENT_IMPORTANCE_UNSPECIFIED"
-            }
-            Self::FinancialCAlendarEventImportanceLow => {
-                "FINANCIAL_cALENDAR_EVENT_IMPORTANCE_LOW"
-            }
-            Self::FinancialCAlendarEventImportanceMedium => {
-                "FINANCIAL_cALENDAR_EVENT_IMPORTANCE_MEDIUM"
-            }
-            Self::FinancialCAlendarEventImportanceHigh => {
-                "FINANCIAL_cALENDAR_EVENT_IMPORTANCE_HIGH"
-            }
+            Self::Unspecified => "FINANCIAL_CALENDAR_EVENT_IMPORTANCE_UNSPECIFIED",
+            Self::Low => "FINANCIAL_CALENDAR_EVENT_IMPORTANCE_LOW",
+            Self::Medium => "FINANCIAL_CALENDAR_EVENT_IMPORTANCE_MEDIUM",
+            Self::High => "FINANCIAL_CALENDAR_EVENT_IMPORTANCE_HIGH",
         }
     }
     /// Creates an enum from field names used in the ProtoBuf definition.
     pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
         match value {
-            "FINANCIAL_cALENDAR_EVENT_IMPORTANCE_UNSPECIFIED" => {
-                Some(Self::FinancialCAlendarEventImportanceUnspecified)
-            }
-            "FINANCIAL_cALENDAR_EVENT_IMPORTANCE_LOW" => {
-                Some(Self::FinancialCAlendarEventImportanceLow)
-            }
-            "FINANCIAL_cALENDAR_EVENT_IMPORTANCE_MEDIUM" => {
-                Some(Self::FinancialCAlendarEventImportanceMedium)
-            }
-            "FINANCIAL_cALENDAR_EVENT_IMPORTANCE_HIGH" => {
-                Some(Self::FinancialCAlendarEventImportanceHigh)
-            }
+            "FINANCIAL_CALENDAR_EVENT_IMPORTANCE_UNSPECIFIED" => Some(Self::Unspecified),
+            "FINANCIAL_CALENDAR_EVENT_IMPORTANCE_LOW" => Some(Self::Low),
+            "FINANCIAL_CALENDAR_EVENT_IMPORTANCE_MEDIUM" => Some(Self::Medium),
+            "FINANCIAL_CALENDAR_EVENT_IMPORTANCE_HIGH" => Some(Self::High),
             _ => None,
         }
     }

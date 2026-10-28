@@ -2,18 +2,21 @@ syntax = "proto3";
 package kytrix.types.v1;
 
 enum FinancialCalendarEventImportance {
-  FINANCIAL_cALENDAR_EVENT_IMPORTANCE_UNSPECIFIED = 0;
-  FINANCIAL_cALENDAR_EVENT_IMPORTANCE_LOW = 1;
-  FINANCIAL_cALENDAR_EVENT_IMPORTANCE_MEDIUM = 2;
-  FINANCIAL_cALENDAR_EVENT_IMPORTANCE_HIGH = 3;
+  FINANCIAL_CALENDAR_EVENT_IMPORTANCE_UNSPECIFIED = 0;
+  FINANCIAL_CALENDAR_EVENT_IMPORTANCE_LOW = 1;
+  FINANCIAL_CALENDAR_EVENT_IMPORTANCE_MEDIUM = 2;
+  FINANCIAL_CALENDAR_EVENT_IMPORTANCE_HIGH = 3;
 }
 
 message FinancialCalendarEvent {
-  sfixed64 timestamp = 1;
-  string country_code = 2;
-  string name = 3;
-  FinancialCalendarEventImportance importance = 4;
-  optional string reference = 5;
+  uint32 year = 1;
+  uint32 month = 2;
+  uint32 day = 3;
+  optional fixed32 seconds_of_day = 4;
+  string country_code = 5;
+  string name = 6;
+  FinancialCalendarEventImportance importance = 7;
+  optional string reference = 8;
 }
 
 message FinancialCalendar {
