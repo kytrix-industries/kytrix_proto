@@ -1,0 +1,18 @@
+syntax = "proto3";
+package kytrix.types.v1;
+
+message CoinMarketCapFearAndGreedIndexPoint{
+  string date  = 1;
+  uint32 score = 2;
+}
+
+message CoinMarketCapFearAndGreedIndex{
+  uint32                              current     = 1;
+  CoinMarketCapFearAndGreedIndexPoint yesterday   = 2;
+  CoinMarketCapFearAndGreedIndexPoint last_week   = 3;
+  CoinMarketCapFearAndGreedIndexPoint last_month  = 4;
+  CoinMarketCapFearAndGreedIndexPoint last_year   = 5;
+  CoinMarketCapFearAndGreedIndexPoint yearly_high = 6;
+  CoinMarketCapFearAndGreedIndexPoint yearly_low  = 7;
+  sfixed64                            timestamp   = 8;
+}

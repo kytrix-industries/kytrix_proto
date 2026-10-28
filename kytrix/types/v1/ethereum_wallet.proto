@@ -1,0 +1,24 @@
+syntax = "proto3";
+package kytrix.types.v1;
+
+enum EthereumWalletSelectionStatus {
+  ETHEREUM_WALLET_SELECTION_STATUS_UNSPECIFIED = 0;
+  ETHEREUM_WALLET_SELECTION_STATUS_ACTIVE = 1;
+  ETHEREUM_WALLET_SELECTION_STATUS_PAUSED = 2;
+}
+
+message EthereumWalletSelection {
+  string address = 1;
+  EthereumWalletSelectionStatus status = 2;
+  sfixed64 created_at = 3;
+  sfixed64 updated_at = 4;
+}
+
+message EthereumWalletEvent {
+  string event_id = 1;
+  string from_address = 2;
+  string to_address = 3;
+  string amount = 4;
+  string token_symbol = 5;
+  sfixed64 timestamp = 6;
+}

@@ -1,0 +1,34 @@
+syntax = "proto3";
+package kytrix.types.v1;
+
+enum EntitlementPlanCode {
+  ENTITLEMENT_PLAN_CODE_UNSPECIFIED = 0;
+  ENTITLEMENT_PLAN_CODE_FREE = 1;
+  ENTITLEMENT_PLAN_CODE_PLUS = 2;
+  ENTITLEMENT_PLAN_CODE_PRO = 3;
+}
+
+enum EntitlementFeatureValueType {
+  ENTITLEMENT_FEATURE_VALUE_TYPE_UNSPECIFIED = 0;
+  ENTITLEMENT_FEATURE_VALUE_TYPE_BOOL = 1;
+  ENTITLEMENT_FEATURE_VALUE_TYPE_LIMIT = 2;
+}
+
+message EntitlementFeature {
+  string key = 1;
+  string display_name_zh = 2;
+  string display_name_en = 3;
+  string description = 4;
+  EntitlementFeatureValueType value_type = 5;
+  string unit = 6;
+  uint32 min_value = 7;
+  uint32 max_value = 8;
+  uint32 sort_order = 9;
+}
+
+message EntitlementFeatureValue {
+  oneof value {
+    bool enabled = 1;
+    uint32 limit = 2;
+  }
+}

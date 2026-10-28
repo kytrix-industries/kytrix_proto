@@ -1,0 +1,8 @@
+syntax = "proto3";
+package kytrix.types.v1;
+
+message PentagonPizzaIndex{
+  uint32   defcon_level = 1;
+  sfixed64 observed_at = 2;
+  sfixed64 timestamp = 3;
+}

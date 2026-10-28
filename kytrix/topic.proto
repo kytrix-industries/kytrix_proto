@@ -1,0 +1,31 @@
+syntax = "proto3";
+package kytrix;
+
+import "types/v1/global_shipping_chokepoint.proto";
+
+message NewsTopic {}
+
+message FinancialIndexTopic {
+  string code = 1;
+}
+
+message XTopic {}
+
+message EthereumWalletTopic {}
+
+message SolanaWalletTopic {}
+
+message GlobalShippingChokepointTopic {
+  types.v1.GlobalShippingChokepointArea area = 1;
+}
+
+message Topic {
+  oneof topic {
+    NewsTopic news = 1;
+    FinancialIndexTopic financial_index = 2;
+    XTopic x = 3;
+    EthereumWalletTopic ethereum_wallet = 4;
+    GlobalShippingChokepointTopic global_shipping_chokepoint = 5;
+    SolanaWalletTopic solana_wallet = 6;
+  }
+}

@@ -1,0 +1,35 @@
+syntax = "proto3";
+package kytrix.types.v1;
+
+message FinancialIndex {
+  string code = 1;
+  uint32 last_price = 2;
+  uint32 open_price = 3;
+  uint32 high_price = 4;
+  uint32 low_price = 5;
+  uint32 close_price = 6;
+  bool is_trading = 7;
+  sfixed64 timestamp = 8;
+}
+
+message FinancialIndexLocalizedName {
+  string en = 1;
+  string zh = 2;
+}
+
+message FinancialIndexCategory {
+  string code = 1;
+  FinancialIndexLocalizedName name = 2;
+}
+
+message FinancialIndexDefinition {
+  string code = 1;
+  string category = 2;
+  FinancialIndexLocalizedName name = 3;
+  string request_code = 4;
+}
+
+message FinancialIndices {
+  repeated FinancialIndexCategory categories = 1;
+  repeated FinancialIndexDefinition indices = 2;
+}

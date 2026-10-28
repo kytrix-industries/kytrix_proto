@@ -1,0 +1,49 @@
+syntax = "proto3";
+package kytrix.types.v1;
+
+enum GlobalShippingChokepointArea {
+  GLOBAL_SHIPPING_CHOKEPOINT_AREA_UNSPECIFIED = 0;
+  GLOBAL_SHIPPING_CHOKEPOINT_AREA_HORMUZ      = 1;
+}
+
+message GlobalShippingChokepointShip {
+  uint32 mmsi        = 1;
+  uint32 imo         = 2;
+  string call_sign   = 3;
+  string name        = 4;
+  string destination = 5;
+  uint32 ship_type   = 6;
+  uint32 flag_mid    = 7;
+  uint32 draught     = 8;
+  uint32 dim_to_bow       = 9;
+  uint32 dim_to_stern     = 10;
+  uint32 dim_to_port      = 11;
+  uint32 dim_to_starboard = 12;
+  uint32 eta_month   = 13;
+  uint32 eta_day     = 14;
+  uint32 eta_hour    = 15;
+  uint32 eta_minute  = 16;
+}
+
+message GlobalShippingChokepointPosition {
+  uint32   mmsi        = 1;
+  sfixed32 latitude    = 2;
+  sfixed32 longitude   = 3;
+  uint32   sog         = 4;
+  uint32   cog         = 5;
+  uint32   heading     = 6;
+  uint32   nav_status  = 7;
+  sfixed64 last_update = 8;
+}
+
+message GlobalShippingChokepointEvent {
+  GlobalShippingChokepointArea area = 1;
+  uint64    epoch     = 2;
+  uint64    sequence  = 3;
+  uint64    base      = 4;
+  bool      keyframe  = 5;
+  repeated GlobalShippingChokepointShip   ships   = 6;
+  repeated GlobalShippingChokepointPosition positions = 7;
+  repeated uint32      removed   = 8;
+  sfixed64  timestamp = 9;
+}

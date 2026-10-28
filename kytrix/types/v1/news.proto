@@ -1,0 +1,16 @@
+syntax = "proto3";
+package kytrix.types.v1;
+
+enum NewsKind {
+  NEWS_KIND_UNSPECIFIED = 0;
+  NEWS_KIND_GENERAL = 1;
+  NEWS_KIND_CRYPTO = 2;
+  NEWS_KIND_POLITICAL = 3;
+}
+
+message News {
+  NewsKind kind = 1;
+  optional string title = 2;
+  string content = 3;
+  sfixed64 timestamp = 4;
+}

@@ -1,0 +1,53 @@
+syntax = "proto3";
+package kytrix.types.v1;
+
+message CryptocurrencyETF{
+  message BTC{
+    string IBIT = 1;
+    string FBTC = 2;
+    string BITB = 3;
+    string ARKB = 4;
+    string BTCO = 5;
+    string EZBC = 6;
+    string BRRR = 7;
+    string HODL = 8;
+    string BTCW = 9;
+    string MSBT = 10;
+    string GBTC = 11;
+    string BTC  = 12;
+  }
+
+  message ETH{
+    string ETHA = 1;
+    string ETHB = 2;
+    string FETH = 3;
+    string ETHW = 4;
+    string TETH = 5;
+    string ETHV = 6;
+    string QETH = 7;
+    string EZET = 8;
+    string ETHE = 9;
+    string ETH  = 10;
+  }
+
+  message SOL{
+    string BSOL = 1;
+    string VSOL = 2;
+    string FSOL = 3;
+    string TSOL = 4;
+    string SOEZ = 5;
+    string GSOL = 6;
+  }
+
+  message HYPE{
+    string BHYP = 1;
+    string THYP = 2;
+    string HYPG = 3;
+  }
+
+  map<string, BTC>  btc       = 1;
+  map<string, ETH>  eth       = 2;
+  map<string, SOL>  sol       = 3;
+  map<string, HYPE> hype      = 4;
+  sfixed64          timestamp = 5;
+}

@@ -1,0 +1,3 @@
+[alias]
+# `cargo xtask <command>` -> `cargo run --quiet --package xtask -- <command>`
+xtask = "run --quiet --package xtask --"

@@ -1,0 +1,84 @@
+syntax = "proto3";
+package kytrix;
+
+import "topic.proto";
+
+message Request {
+  uint32 id = 1;
+
+  oneof request {
+    SetSubscriptionsRequest set_subscriptions_request = 101;
+    ReauthenticateRequest reauthenticate_request = 102;
+    GetCryptocurrencyEtfRequest get_cryptocurrency_etf_request = 103;
+    GetFinancialIndicesRequest get_financial_indices_request = 104;
+    SearchXUserRequest search_x_user_request = 105;
+    GetXUserSelectionsRequest get_x_user_selections_request = 106;
+    AddXUserSelectionRequest add_x_user_selection_request = 107;
+    RemoveXUserSelectionRequest remove_x_user_selection_request = 108;
+    GetXPostsRequest get_x_posts_request = 109;
+    GetEthereumWalletSelectionsRequest get_ethereum_wallet_selections_request = 110;
+    AddEthereumWalletSelectionRequest add_ethereum_wallet_selection_request = 111;
+    RemoveEthereumWalletSelectionRequest remove_ethereum_wallet_selection_request = 112;
+    GetCoinMarketCapFearAndGreedIndexRequest get_coin_market_cap_fear_and_greed_index_request = 114;
+    GetFinancialCalendarRequest get_financial_calendar_request = 113;
+    GetPentagonPizzaIndexRequest get_pentagon_pizza_index_request = 115;
+    GetSolanaWalletSelectionsRequest get_solana_wallet_selections_request = 116;
+    AddSolanaWalletSelectionRequest add_solana_wallet_selection_request = 117;
+    RemoveSolanaWalletSelectionRequest remove_solana_wallet_selection_request = 118;
+  }
+}
+
+message SetSubscriptionsRequest {
+  repeated Topic topics = 1;
+}
+
+message ReauthenticateRequest {
+  string access_token = 1;
+  string dpop_proof = 2;
+}
+
+message GetCryptocurrencyEtfRequest {}
+
+message GetFinancialIndicesRequest {}
+
+message SearchXUserRequest {
+  string query = 1;
+}
+
+message GetXUserSelectionsRequest {}
+
+message AddXUserSelectionRequest {
+  string username = 1;
+}
+
+message RemoveXUserSelectionRequest {
+  string x_user_id = 1;
+}
+
+message GetXPostsRequest {}
+
+message GetEthereumWalletSelectionsRequest {}
+
+message AddEthereumWalletSelectionRequest {
+  string address = 1;
+}
+
+message RemoveEthereumWalletSelectionRequest {
+  string address = 1;
+}
+
+message GetSolanaWalletSelectionsRequest {}
+
+message AddSolanaWalletSelectionRequest {
+  string address = 1;
+}
+
+message RemoveSolanaWalletSelectionRequest {
+  string address = 1;
+}
+
+message GetCoinMarketCapFearAndGreedIndexRequest {}
+
+message GetFinancialCalendarRequest {}
+
+message GetPentagonPizzaIndexRequest {}

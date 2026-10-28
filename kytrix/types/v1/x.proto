@@ -1,0 +1,82 @@
+syntax = "proto3";
+package kytrix.types.v1;
+
+message XUserProfile {
+  string x_user_id = 1;
+  string username = 2;
+  string display_name = 3;
+  string avatar_url = 4;
+  bool verified = 5;
+  uint64 revision = 6;
+  string description = 7;
+  uint64 followers_count = 8;
+  uint64 following_count = 9;
+  bool protected = 10;
+}
+
+enum XUserSelectionStatus {
+  X_USER_SELECTION_STATUS_UNSPECIFIED = 0;
+  X_USER_SELECTION_STATUS_PENDING = 1;
+  X_USER_SELECTION_STATUS_ACTIVE = 2;
+  X_USER_SELECTION_STATUS_PAUSED = 3;
+}
+
+message XUserSelection {
+  string x_user_id = 1;
+  XUserSelectionStatus selection_status = 2;
+  sfixed64 created_at = 3;
+  sfixed64 updated_at = 4;
+  XUserProfile profile = 5;
+}
+
+message XPostTextSegment {
+  string text = 1;
+  optional string url = 2;
+}
+
+message XPost {
+  string post_id = 1;
+  sfixed64 timestamp = 2;
+  repeated XPostTextSegment text_segments = 3;
+
+  oneof reference {
+    XPost repost = 4;
+    XPost quote = 5;
+  }
+
+  string x_user_id = 6;
+  repeated XPostMedia media = 7;
+}
+
+message XPostMedia {
+  oneof content {
+    Image image = 1;
+    Video video = 2;
+    Gif gif = 3;
+  }
+
+  message Image {
+    string image_url = 1;
+    uint32 width = 2;
+    uint32 height = 3;
+  }
+
+  message Video {
+    string playback_url = 1;
+    string thumbnail_url = 2;
+    uint32 width = 3;
+    uint32 height = 4;
+  }
+
+  message Gif {
+    string animation_url = 1;
+    string image_url = 2;
+    uint32 width = 3;
+    uint32 height = 4;
+  }
+}
+
+message XPosts {
+  repeated XPost posts = 1;
+  repeated XUserProfile profiles = 2;
+}

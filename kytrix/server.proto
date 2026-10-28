@@ -1,0 +1,152 @@
+syntax = "proto3";
+package kytrix;
+
+import "event.proto";
+import "topic.proto";
+import "types/v1/coin_market_cap_fear_and_greed_index.proto";
+import "types/v1/cryptocurrency_etf.proto";
+import "types/v1/entitlement.proto";
+import "types/v1/ethereum_wallet.proto";
+import "types/v1/financial_calendar.proto";
+import "types/v1/financial_index.proto";
+import "types/v1/pentagon_pizza_index.proto";
+import "types/v1/solana_wallet.proto";
+import "types/v1/x.proto";
+
+message ServerMessage {
+  oneof message {
+    Response response = 1;
+    Event event = 2;
+    SessionState session_state = 3;
+    AuthChallenge auth_challenge = 4;
+  }
+}
+
+message Response {
+  uint32 id = 1;
+
+  oneof response {
+    ErrorResponse error = 100;
+    SetSubscriptionsResponse set_subscriptions_response = 101;
+    ReauthenticateResponse reauthenticate_response = 102;
+    GetCryptocurrencyEtfResponse get_cryptocurrency_etf_response = 103;
+    GetFinancialIndicesResponse get_financial_indices_response = 104;
+    SearchXUserResponse search_x_user_response = 105;
+    GetXUserSelectionsResponse get_x_user_selections_response = 106;
+    AddXUserSelectionResponse add_x_user_selection_response = 107;
+    RemoveXUserSelectionResponse remove_x_user_selection_response = 108;
+    GetXPostsResponse get_x_posts_response = 109;
+    GetEthereumWalletSelectionsResponse get_ethereum_wallet_selections_response = 110;
+    AddEthereumWalletSelectionResponse add_ethereum_wallet_selection_response = 111;
+    RemoveEthereumWalletSelectionResponse remove_ethereum_wallet_selection_response = 112;
+    GetFinancialCalendarResponse get_financial_calendar = 113;
+    GetCoinMarketCapFearAndGreedIndexResponse get_coin_market_cap_fear_and_greed_index = 114;
+    GetPentagonPizzaIndexResponse get_pentagon_pizza_index = 115;
+    GetSolanaWalletSelectionsResponse get_solana_wallet_selections_response = 116;
+    AddSolanaWalletSelectionResponse add_solana_wallet_selection_response = 117;
+    RemoveSolanaWalletSelectionResponse remove_solana_wallet_selection_response = 118;
+  }
+}
+
+enum ErrorCode {
+  ERROR_CODE_UNSPECIFIED = 0;
+  ERROR_CODE_RATE_LIMIT = 1;
+  ERROR_CODE_ENTITLEMENT_REQUIRED = 2;
+  ERROR_CODE_FINANCIAL_INDEX_TOPIC_LIMIT_EXCEEDED = 3;
+  ERROR_CODE_INVALID_TOPIC = 4;
+  ERROR_CODE_AUTHENTICATION_UNAVAILABLE = 5;
+  ERROR_CODE_INVALID_REQUEST = 6;
+  ERROR_CODE_NOT_READY = 7;
+  ERROR_CODE_INVALID_ARGUMENT = 8;
+  ERROR_CODE_NOT_FOUND = 9;
+  ERROR_CODE_QUOTA_EXCEEDED = 10;
+  ERROR_CODE_PROTECTED_ACCOUNT = 11;
+  ERROR_CODE_UPSTREAM_UNAVAILABLE = 12;
+  ERROR_CODE_TIMEOUT = 13;
+  ERROR_CODE_MUTATION_UNKNOWN = 14;
+  ERROR_CODE_PROTOCOL = 15;
+}
+
+message ErrorResponse {
+  ErrorCode code = 1;
+}
+
+message SetSubscriptionsResponse {
+  repeated Topic topics = 1;
+}
+
+message ReauthenticateResponse {}
+
+message GetCryptocurrencyEtfResponse {
+  types.v1.CryptocurrencyETF cryptocurrency_etf = 1;
+}
+
+message GetFinancialIndicesResponse {
+  types.v1.FinancialIndices indices = 1;
+}
+
+message SearchXUserResponse {
+  repeated types.v1.XUserProfile profiles = 1;
+}
+
+message GetXUserSelectionsResponse {
+  repeated types.v1.XUserSelection selections = 1;
+  uint32 x_account_limit = 2;
+}
+
+message AddXUserSelectionResponse {
+  types.v1.XUserSelection selection = 1;
+}
+
+message RemoveXUserSelectionResponse {}
+
+message GetXPostsResponse {
+  types.v1.XPosts posts = 1;
+}
+
+message GetEthereumWalletSelectionsResponse {
+  repeated types.v1.EthereumWalletSelection selections = 1;
+  uint32 ethereum_wallet_monitor_address_limit = 2;
+}
+
+message AddEthereumWalletSelectionResponse {
+  types.v1.EthereumWalletSelection selection = 1;
+}
+
+message RemoveEthereumWalletSelectionResponse {}
+
+message GetSolanaWalletSelectionsResponse {
+  repeated types.v1.SolanaWalletSelection selections = 1;
+  uint32 solana_wallet_monitor_address_limit = 2;
+}
+
+message AddSolanaWalletSelectionResponse {
+  types.v1.SolanaWalletSelection selection = 1;
+}
+
+message RemoveSolanaWalletSelectionResponse {}
+
+message GetFinancialCalendarResponse {
+  types.v1.FinancialCalendar financial_calendar = 1;
+}
+
+message GetCoinMarketCapFearAndGreedIndexResponse {
+  types.v1.CoinMarketCapFearAndGreedIndex coin_market_cap_fear_and_greed_index = 1;
+}
+
+message GetPentagonPizzaIndexResponse {
+  types.v1.PentagonPizzaIndex pentagon_pizza_index = 1;
+}
+
+message AuthChallenge {
+  string nonce = 1;
+  int64 expires_at = 2;
+}
+
+message SessionState {
+  uint64 entitlement_revision = 1;
+  types.v1.EntitlementPlanCode entitlement_plan_code = 2;
+  map<string, types.v1.EntitlementFeatureValue> entitlement_values = 3;
+  repeated types.v1.EntitlementFeature entitlement_features = 4;
+  optional int64 next_change_at = 5;
+}
