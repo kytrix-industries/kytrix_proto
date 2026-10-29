@@ -23,6 +23,8 @@ message GlobalShippingChokepointShip {
   uint32 eta_day     = 14;
   uint32 eta_hour    = 15;
   uint32 eta_minute  = 16;
+  // Unix milliseconds of the source's last static report; 0 = unknown.
+  sfixed64 static_updated_at = 17;
 }
 
 message GlobalShippingChokepointPosition {

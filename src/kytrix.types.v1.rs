@@ -33,6 +33,9 @@ pub struct GlobalShippingChokepointShip {
     pub eta_hour: u32,
     #[prost(uint32, tag = "16")]
     pub eta_minute: u32,
+    /// Unix milliseconds of the source's last static report; 0 = unknown.
+    #[prost(sfixed64, tag = "17")]
+    pub static_updated_at: i64,
 }
 #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct GlobalShippingChokepointPosition {
