@@ -108,12 +108,8 @@ impl GlobalShippingChokepointArea {
 pub struct EthereumWalletSelection {
     #[prost(string, tag = "1")]
     pub address: ::prost::alloc::string::String,
-    #[prost(enumeration = "EthereumWalletSelectionStatus", tag = "2")]
-    pub status: i32,
-    #[prost(sfixed64, tag = "3")]
+    #[prost(sfixed64, tag = "2")]
     pub created_at: i64,
-    #[prost(sfixed64, tag = "4")]
-    pub updated_at: i64,
 }
 #[derive(serde::Serialize, serde::Deserialize)]
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
@@ -130,35 +126,6 @@ pub struct EthereumWalletEvent {
     pub token_symbol: ::prost::alloc::string::String,
     #[prost(sfixed64, tag = "6")]
     pub timestamp: i64,
-}
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
-#[repr(i32)]
-pub enum EthereumWalletSelectionStatus {
-    Unspecified = 0,
-    Active = 1,
-    Paused = 2,
-}
-impl EthereumWalletSelectionStatus {
-    /// String value of the enum field names used in the ProtoBuf definition.
-    ///
-    /// The values are not transformed in any way and thus are considered stable
-    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
-    pub fn as_str_name(&self) -> &'static str {
-        match self {
-            Self::Unspecified => "ETHEREUM_WALLET_SELECTION_STATUS_UNSPECIFIED",
-            Self::Active => "ETHEREUM_WALLET_SELECTION_STATUS_ACTIVE",
-            Self::Paused => "ETHEREUM_WALLET_SELECTION_STATUS_PAUSED",
-        }
-    }
-    /// Creates an enum from field names used in the ProtoBuf definition.
-    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
-        match value {
-            "ETHEREUM_WALLET_SELECTION_STATUS_UNSPECIFIED" => Some(Self::Unspecified),
-            "ETHEREUM_WALLET_SELECTION_STATUS_ACTIVE" => Some(Self::Active),
-            "ETHEREUM_WALLET_SELECTION_STATUS_PAUSED" => Some(Self::Paused),
-            _ => None,
-        }
-    }
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct FinancialIndex {
@@ -263,12 +230,8 @@ impl NewsKind {
 pub struct SolanaWalletSelection {
     #[prost(string, tag = "1")]
     pub address: ::prost::alloc::string::String,
-    #[prost(enumeration = "SolanaWalletSelectionStatus", tag = "2")]
-    pub status: i32,
-    #[prost(sfixed64, tag = "3")]
+    #[prost(sfixed64, tag = "2")]
     pub created_at: i64,
-    #[prost(sfixed64, tag = "4")]
-    pub updated_at: i64,
 }
 #[derive(serde::Serialize, serde::Deserialize)]
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
@@ -285,35 +248,6 @@ pub struct SolanaWalletEvent {
     pub token_symbol: ::prost::alloc::string::String,
     #[prost(sfixed64, tag = "6")]
     pub timestamp: i64,
-}
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
-#[repr(i32)]
-pub enum SolanaWalletSelectionStatus {
-    Unspecified = 0,
-    Active = 1,
-    Paused = 2,
-}
-impl SolanaWalletSelectionStatus {
-    /// String value of the enum field names used in the ProtoBuf definition.
-    ///
-    /// The values are not transformed in any way and thus are considered stable
-    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
-    pub fn as_str_name(&self) -> &'static str {
-        match self {
-            Self::Unspecified => "SOLANA_WALLET_SELECTION_STATUS_UNSPECIFIED",
-            Self::Active => "SOLANA_WALLET_SELECTION_STATUS_ACTIVE",
-            Self::Paused => "SOLANA_WALLET_SELECTION_STATUS_PAUSED",
-        }
-    }
-    /// Creates an enum from field names used in the ProtoBuf definition.
-    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
-        match value {
-            "SOLANA_WALLET_SELECTION_STATUS_UNSPECIFIED" => Some(Self::Unspecified),
-            "SOLANA_WALLET_SELECTION_STATUS_ACTIVE" => Some(Self::Active),
-            "SOLANA_WALLET_SELECTION_STATUS_PAUSED" => Some(Self::Paused),
-            _ => None,
-        }
-    }
 }
 #[derive(serde::Serialize, serde::Deserialize)]
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
